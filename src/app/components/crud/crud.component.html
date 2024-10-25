@@ -1,0 +1,125 @@
+<div class="border-b p-4 bg-white shadow-md">
+  <header class="w-full flex items-center justify-between">
+    <img
+      src="https://codetheweb.blog/assets/img/icon2.png"
+      class="h-14"
+      alt="Logo"
+    />
+    <nav>
+      <ul class="flex space-x-6">
+        <li><a href="#" class="text-gray-600 hover:text-blue-500">Home</a></li>
+        <li><a href="#" class="text-gray-600 hover:text-blue-500">About</a></li>
+        <li>
+          <a href="#" class="text-gray-600 hover:text-blue-500">Pricing</a>
+        </li>
+        <li>
+          <a href="#" class="text-gray-600 hover:text-blue-500">Terms of use</a>
+        </li>
+        <li>
+          <a href="#" class="text-gray-600 hover:text-blue-500">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<div class="flex">
+  <main
+    class="container mt-8 mx-auto w-[30%] bg-white p-6 rounded-lg shadow-lg"
+  >
+    <h2 class="text-2xl font-bold mb-4">
+      {{ isEdit ? "Edit Form" : "CRUD Form" }}
+    </h2>
+    <form class="space-y-4" (ngSubmit)="handleSubmit()">
+      <div class="form-group">
+        <label
+          for="exampleInputEmail1"
+          class="block text-sm font-medium text-gray-700"
+          >Email address</label
+        >
+        <input
+          type="email"
+          class="form-control mt-1 block w-full border border-gray-300 rounded-md p-2"
+          id="exampleInputEmail1"
+          placeholder="Enter email"
+          [(ngModel)]="formData.email"
+          name="email"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label
+          for="exampleInputPassword1"
+          class="block text-sm font-medium text-gray-700"
+          >Password</label
+        >
+        <input
+          type="password"
+          class="form-control mt-1 block w-full border border-gray-300 rounded-md p-2"
+          id="exampleInputPassword1"
+          placeholder="Password"
+          [(ngModel)]="formData.password"
+          name="password"
+          required
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
+      >
+        {{ isEdit ? "Update" : "Submit" }}
+      </button>
+    </form>
+  </main>
+
+  <!-- Display submitted form data in a table -->
+  <div
+    class="container mt-8 mx-auto w-[60%] bg-gray-50 p-4 rounded-lg shadow-lg"
+  >
+    <h3 class="text-xl font-semibold mb-4">Submitted Data</h3>
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-100">
+        <tr>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Email
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Password
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <tr *ngFor="let data of crudDataArray; let i = index">
+          <td class="px-6 py-4 whitespace-nowrap">{{ data.email }}</td>
+          <td class="px-6 py-4 whitespace-nowrap">{{ data.password }}</td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <button
+              (click)="editData(i)"
+              class="text-blue-600 hover:text-blue-900"
+            >
+              Edit
+            </button>
+            <button
+              (click)="deleteData(i)"
+              class="text-red-600 hover:text-red-900 ml-4"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div>{{store.todos() | json}}</div>

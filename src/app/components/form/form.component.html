@@ -1,0 +1,83 @@
+<form [formGroup]="multiInputForm" (ngSubmit)="onSubmit()">
+  <!-- Text Input -->
+  <label>Name</label>
+  <input type="text" formControlName="name" placeholder="Enter your name" />
+
+  <!-- Password Input -->
+  <label>Password</label>
+  <input
+    type="password"
+    formControlName="password"
+    placeholder="Enter your password"
+  />
+
+  <!-- Email Input -->
+  <label>Email</label>
+  <input type="email" formControlName="email" placeholder="Enter your email" />
+
+  <!-- Number Input -->
+  <label>Age</label>
+  <input type="number" formControlName="age" placeholder="Enter your age" />
+
+  <!-- Checkbox Input -->
+  <label>
+    <input type="checkbox" formControlName="acceptTerms" />
+    Accept Terms & Conditions
+  </label>
+
+  <!-- Radio Buttons -->
+  <label>Gender</label>
+  <label
+    ><input type="radio" formControlName="gender" value="male" /> Male</label
+  >
+  <label
+    ><input type="radio" formControlName="gender" value="female" />
+    Female</label
+  >
+
+  <!-- Color Picker -->
+  <label>Favorite Color</label>
+  <input type="color" formControlName="color" />
+
+  <!-- Date Picker -->
+  <label>Date of Birth</label>
+  <input type="date" formControlName="dateOfBirth" />
+
+  <!-- Time Picker -->
+  <label>Preferred Appointment Time</label>
+  <input type="time" formControlName="appointmentTime" />
+
+  <!-- Textarea -->
+  <label>Feedback</label>
+  <textarea
+    formControlName="feedback"
+    placeholder="Enter your feedback"
+  ></textarea>
+
+  <!-- Range Slider -->
+  <label>Rating</label>
+  <input type="range" formControlName="range" min="0" max="100" />
+
+  <!-- Dropdown Select -->
+  <label>Options</label>
+  <select formControlName="options">
+    <option value="">Select an option</option>
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+    <option value="option3">Option 3</option>
+  </select>
+
+  <!-- File Upload -->
+  <label>Upload File</label>
+  <input type="file" (change)="onFileSelect($event)" />
+
+  <!-- Phone Input -->
+  <label>Phone</label>
+  <input
+    type="tel"
+    formControlName="phone"
+    placeholder="Enter your phone number"
+  />
+
+  <button type="submit" [disabled]="!multiInputForm.valid">Submit</button>
+</form>
